@@ -8,7 +8,7 @@ public class Pedido {
 	private BigDecimal valorNegociado;
 	private LocalDate dataDaEntrega;
 	private String urlProduto;
-	private String urlImages;
+	private String urlImagem;
 	private String descricao;
 	
 	public String getNomeProduto() {
@@ -35,11 +35,11 @@ public class Pedido {
 	public void setUrlProduto(String urlProduto) {
 		this.urlProduto = urlProduto;
 	}
-	public String getUrlImages() {
-		return urlImages;
+	public String getUrlImagem() {
+		return urlImagem;
 	}
-	public void setUrlImages(String urlImages) {
-		this.urlImages = urlImages;
+	public void setUrlImagem(String urlImages) {
+		this.urlImagem = urlImages;
 	}
 	public String getDescricao() {
 		return descricao;
