@@ -26,6 +26,11 @@ public class PedidoController {
 		return "pedido/formulario";
 	}
 	
+	@GetMapping("novo")
+	public String novoRedirecionamento(RequisicaoNovoPedido requisicaoNovoPedido) {
+		return "pedido/formulario";
+	}
+	
 	@PostMapping("novo")
 	public String novo(@Valid RequisicaoNovoPedido requisicaoNovoPedido, BindingResult result) {			
 		if(result.hasErrors()) {
