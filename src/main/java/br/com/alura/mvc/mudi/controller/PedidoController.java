@@ -28,7 +28,7 @@ public class PedidoController {
 	
 	@GetMapping("novo")
 	public String novoRedirecionamento(RequisicaoNovoPedido requisicaoNovoPedido) {
-		return "pedido/formulario";
+		return "redirect:/pedido/formulario";
 	}
 	
 	@PostMapping("novo")
@@ -40,6 +40,6 @@ public class PedidoController {
 		Pedido pedido = requisicaoNovoPedido.toPedido();		
 		pedidosRepository.save(pedido);
 		
-		return "pedido/formulario";
+		return "redirect:/home";
 	}
 }
