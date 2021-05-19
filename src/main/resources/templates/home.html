@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 
-<head th:replace="~{base :: head}"></head>
+<head th:replace="~{public/base :: head}"></head>
 
 <body>
-	<div th:replace="~{base :: logo}"></div>
+	<div th:replace="~{public/base :: logo}"></div>
 	<div class="container">
-		<div th:replace="~{base :: titulo('Meus Pedidos')}"></div>
+		<div th:replace="~{public/base :: titulo('Meus Pedidos')}"></div>
 
 		<nav
 			class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between mb-3">
@@ -42,9 +42,9 @@
 								value="url do produto" />
 						</div>
 
-						<div>Descrição</div>
+						<div>DescriÃ§Ã£o</div>
 						<div>
-							<textarea class="form-control" th:text="${pedido.descricao}">descrição do pedido</textarea>
+							<textarea class="form-control" th:text="${pedido.descricao}">descriÃ§Ã£o do pedido</textarea>
 						</div>
 					</div>
 					<div class="col-12 col-sm-4">

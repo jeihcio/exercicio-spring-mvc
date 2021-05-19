@@ -1,10 +1,10 @@
 <html>
-<head th:replace="~{base :: head}"></head>
+<head th:replace="~{public/base :: head}"></head>
 <body>
-	<div th:replace="~{base :: logo}"></div>
+	<div th:replace="~{public/base :: logo}"></div>
 
 	<div class="container">
-		<div th:replace="~{base :: titulo('Novo Pedido')}"></div>
+		<div th:replace="~{public/base :: titulo('Novo Pedido')}"></div>
 
 		<div class="card mt-3 mb-3">
 			<form th:object="${requisicaoNovoPedido}" action="/pedido/novo"
