@@ -16,23 +16,24 @@
 				method="POST" class="card-body">
 				<div class="form-group">
 					<label for="nomeProduto">Produto</label> <input
-						placeholder="nome do produto" class="form-control" /> <small>Informa
-						qual o nome do produto.</small>
+						th:field="*{nomeProduto}" placeholder="nome do produto"
+						class="form-control" /> <small>Informa qual o nome do
+						produto.</small>
 				</div>
 				<div class="form-group">
-					<label for="urlProduto">Url</label> <input
+					<label for="urlProduto">Url</label> <input th:field="*{urlProduto}"
 						placeholder="url do produto" class="form-control" /> <small>Procure
 						em um site o produto que você deseja e cole a url da página aqui.</small>
 				</div>
 				<div class="form-group">
 					<label for="urlImagem">Imagem</label> <input
-						placeholder="url da imagem" class="form-control" /> <small>Copie
-						a url de uma boa imagem do produto e cole aqui para ajudar a
-						conseguir compradores.</small>
+						th:field="*{urlImagem}" placeholder="url da imagem"
+						class="form-control" /> <small>Copie a url de uma boa
+						imagem do produto e cole aqui para ajudar a conseguir compradores.</small>
 				</div>
 				<div class="form-group">
 					<label for="descricao">Descrição</label>
-					<textarea
+					<textarea th:field="*{descricao}"
 						placeholder="Adicione detalhes importantes para ajudar o comprador."
 						class="form-control"></textarea>
 				</div>
