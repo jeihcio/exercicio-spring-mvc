@@ -22,7 +22,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().anyRequest().authenticated().and().formLogin().loginPage("/login")
-				.defaultSuccessUrl("/home", true).permitAll().and().logout().logoutUrl("/logout");
+				.defaultSuccessUrl("/home", true).permitAll().and().logout().logoutUrl("/logout").and().csrf()
+				.disable();
 	}
 
 	@Override
@@ -32,6 +33,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// User.builder().username("joao").password(enconder.encode("joao")).roles("ADM").build();
 
 		auth.jdbcAuthentication().dataSource(dataSource).passwordEncoder(enconder);
-		//withUser(user);
+		// withUser(user);
 	}
 }
