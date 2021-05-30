@@ -13,6 +13,9 @@ import br.com.alura.mvc.mudi.Repository.PedidosRepository;
 import br.com.alura.mvc.mudi.model.Pedido;
 import br.com.alura.mvc.mudi.model.StatusPedido;
 
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+
 @Controller
 @RequestMapping("/home")
 public class HomeController {
@@ -22,7 +25,11 @@ public class HomeController {
 	
 	@GetMapping
 	public String home(Model model, Principal principal) {
-		List<Pedido> pedidos = repository.findByStatus(StatusPedido.ENTREGUE);			
+		Sort sort = Sort.by("dataDaEntrega").descending();
+		PageRequest paginacao = PageRequest.of(0, 10, sort);
+		
+		List<Pedido> pedidos = repository.findByStatus(StatusPedido.ENTREGUE, paginacao);	
+		
 		model.addAttribute("pedidos", pedidos);		
 		return "home";
 	}
