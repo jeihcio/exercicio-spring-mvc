@@ -33,6 +33,7 @@ public class Pedido {
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
 	
+	@JsonIgnore 
 	public List<Oferta> getOfertas() {
 		return ofertas;
 	}

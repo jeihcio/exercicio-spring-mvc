@@ -69,7 +69,7 @@
 				      .get('http://localhost:8080/api/pedidos/aguardando')
 				      .then(response => {
 				    	  response.data.forEach(pedido => pedido.ofertaEnviada = false);
-				    	  this.pedidos = response.data
+				    	  this.pedidos = response.data;
 				      })
 				},
 				methods: {
