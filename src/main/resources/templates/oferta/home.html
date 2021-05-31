@@ -30,10 +30,16 @@
 							<div class="col-5">
 								Valor: <input v-model="pedido.valorNegociado"
 									class="form-control" />
+
+								<div v-if="pedido.erros.valor" class="invalid-feedback">
+									{{pedido.erros.valor}}</div>
 							</div>
 							<div class="col-7">
 								Data da entrega: <input v-model="pedido.dataDaEntrega"
 									class="form-control" />
+									
+								<div v-if="pedido.erros.dataDaEntrega" class="invalid-feedback">
+									{{pedido.erros.dataDaEntrega}}</div>
 							</div>
 						</div>
 						<div class="mt-2">
@@ -68,7 +74,13 @@
 					axios
 				      .get('http://localhost:8080/api/pedidos/aguardando')
 				      .then(response => {
-				    	  response.data.forEach(pedido => pedido.ofertaEnviada = false);
+				    	  response.data.forEach(pedido => {
+				    		  pedido.ofertaEnviada = false;
+				    		  pedido.erros = {
+				    				  valor: '',
+				    				  dataDaEntrega: ''
+				    		  }
+				    	  });
 				    	  this.pedidos = response.data;
 				      })
 				},
@@ -81,7 +93,12 @@
 								dataDaEntrega: pedido.dataDaEntrega,
 								comentario: pedido.comentario
 							})
-							.then(response => pedido.ofertaEnviada = true);
+							.then(response => pedido.ofertaEnviada = true)
+							.catch(error => {
+								error.response.data.errors.forEach(error => {
+									this.pedido.erros[error.field] = error.defaultMessage;
+								});
+							});
 					}
 				}
 			})
