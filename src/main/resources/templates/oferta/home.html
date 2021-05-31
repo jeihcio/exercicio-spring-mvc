@@ -29,15 +29,17 @@
 						<div class="row mt-3">
 							<div class="col-5">
 								Valor: <input v-model="pedido.valorNegociado"
-									class="form-control" />
+									class="form-control"
+									v-bind:class="{'is-invalid':pedido.erros.valor !== ''}" />
 
 								<div v-if="pedido.erros.valor" class="invalid-feedback">
 									{{pedido.erros.valor}}</div>
 							</div>
 							<div class="col-7">
 								Data da entrega: <input v-model="pedido.dataDaEntrega"
-									class="form-control" />
-									
+									class="form-control"
+									v-bind:class="{'is-invalid':pedido.erros.dataDaEntrega !== ''}" />
+
 								<div v-if="pedido.erros.dataDaEntrega" class="invalid-feedback">
 									{{pedido.erros.dataDaEntrega}}</div>
 							</div>
@@ -71,6 +73,11 @@
 					pedidos: null
 				},
 				mounted(){
+					pedido.erros = {
+						valor: '',
+						dataDaEntrega: ''
+					}
+					
 					axios
 				      .get('http://localhost:8080/api/pedidos/aguardando')
 				      .then(response => {
@@ -96,7 +103,7 @@
 							.then(response => pedido.ofertaEnviada = true)
 							.catch(error => {
 								error.response.data.errors.forEach(error => {
-									this.pedido.erros[error.field] = error.defaultMessage;
+									pedido.erros[error.field] = error.defaultMessage;
 								});
 							});
 					}
