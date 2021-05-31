@@ -72,12 +72,7 @@
 				data: {
 					pedidos: null
 				},
-				mounted(){
-					pedido.erros = {
-						valor: '',
-						dataDaEntrega: ''
-					}
-					
+				mounted(){	
 					axios
 				      .get('http://localhost:8080/api/pedidos/aguardando')
 				      .then(response => {
@@ -93,6 +88,11 @@
 				},
 				methods: {
 					enviarOferta: function(pedido) {
+						pedido.erros = {
+							valor: '',
+							dataDaEntrega: ''
+						};
+						
 						axios
 							.post('http://localhost:8080/api/ofertas', {
 								pedidoId: pedido.id,
