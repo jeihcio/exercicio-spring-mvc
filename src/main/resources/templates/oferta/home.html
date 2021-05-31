@@ -28,7 +28,7 @@
 						</div>
 						<div class="row mt-3">
 							<div class="col-5">
-								Valor: <input v-model="pedido.valor" class="form-control" />
+								Valor: <input v-model="pedido.valorNegociado" class="form-control" />
 							</div>
 							<div class="col-7">
 								Data da entrega: <input v-model="pedido.dataDaEntrega"
@@ -67,7 +67,14 @@
 				},
 				methods: {
 					enviarOferta: function(pedido) {
-						
+						axios
+							.post('http://localhost:8080/api/ofertas', {
+								pedidoId: pedido.id,
+								valor: pedido.valorNegociado,
+								dataDaEntrega: pedido.dataDaEntrega,
+								comentario: pedido.comentario
+							})
+							.then(response => console.log(response));
 					}
 				}
 			})
